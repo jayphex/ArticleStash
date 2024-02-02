@@ -8,7 +8,7 @@ order for better allocation. Perhaps, a review of the article, furthermore, the 
 read the article. This application would be used by anyone that wants to track the articles that they read online, 
 in particular, this application would be most useful to me as I have constantly found it annoying to track articles that
 I have read online, yes the bookmarks/favourites option is possible, however, it often gets messy there and I would like
-leave a review of the articles to let myself be aware of what I've read in the future, as well as my thoughts.
+to leave a review of the articles I've read just as a way to remember my thoughts on the articles in the future.
 
 ## User Stories 
 
