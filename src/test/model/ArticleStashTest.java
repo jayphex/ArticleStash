@@ -1,6 +1,5 @@
 package model;
 
-import model.exceptions.ArticleAlreadyAddedException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,13 +18,13 @@ class ArticleStashTest {
 
     @Test
     public void testConstructor() {
-        assertEquals("jay", testArticleStash.getUser());
+        assertEquals("jay", testArticleStash.getReadList());
         assertEquals(0, testArticleStash.getNumOfArticles());
     }
 
     @Test
     public void testGetUser() {
-        assertEquals("jay", testArticleStash.getUser());
+        assertEquals("jay", testArticleStash.getReadList());
     }
 
     @Test

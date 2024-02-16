@@ -1,22 +1,25 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Objects;
+
+// This class contains the list of articles that the user has stashed, and
+// provides holds the information of which articles the user has stashed either
+// in their want to reads or the list of books they've already read.
 
 public class ArticleStash {
     ArrayList<String> articleStash;
-    private String user;
+    private String readList;
 
     // EFFECTS: constructs a user and provides amount of articles read
     // also initializes a log of articles that the user has classified
     // as read (a list)
-    public ArticleStash(String userName) {
+    public ArticleStash(String list) {
         articleStash = new ArrayList<>();
-        user = userName;
+        readList = list;
     }
 
-    public String getUser() {
-        return user;
+    public String getReadList() {
+        return readList;
     }
 
     public ArrayList<String> getArticles() {
