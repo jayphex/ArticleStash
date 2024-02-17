@@ -1,5 +1,6 @@
 package ui;
 
+import model.Article;
 import model.ArticleStash;
 
 import java.util.Scanner;
@@ -14,6 +15,7 @@ public class ArticleStashApp {
         runArticleStash();
     }
 
+    // Received from TellerApp
     private void runArticleStash() {
         boolean keepGoing = true;
         String command = null;
@@ -34,6 +36,7 @@ public class ArticleStashApp {
         System.out.println("That's all!");
     }
 
+    // Received from TellerApp
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
@@ -46,11 +49,12 @@ public class ArticleStashApp {
         }
     }
 
+    // Received from TellerApp
     // MODIFIES: this
     // EFFECTS: initializes accounts
     private void init() {
-        articlesRead = new ArticleStash("jay");
-        wantToRead = new ArticleStash("jay");
+        articlesRead = new ArticleStash();
+        wantToRead = new ArticleStash();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
@@ -63,18 +67,24 @@ public class ArticleStashApp {
         System.out.println("\tquit: quit");
     }
 
+    // Received from TellerApp
     // MODIFIES: this
-    // EFFECTS: conducts a deposit transaction
+    // EFFECTS: conducts an add article command
     private void doAddArticle() {
         ArticleStash selected = selectList();
         System.out.print("Enter article you would like to add: ");
         String article = input.next();
-        selected.addArticle(article);
+        System.out.print("Enter the rating you would give the article: ");
+        int rating = Integer.parseInt(input.next());
+        System.out.print("Enter the comment you would like to add about the article: ");
+        String comment = input.next();
+        selected.addArticle(article, rating, comment);
         printArticles(selected);
     }
 
+    // Received from TellerApp
     // MODIFIES: this
-    // EFFECTS: conducts a withdraw transaction
+    // EFFECTS: conducts a remove article command
     private void doRemoveArticle() {
         ArticleStash selected = selectList();
         System.out.print("Enter article you would like to remove: ");
@@ -83,6 +93,7 @@ public class ArticleStashApp {
         printArticles(selected);
     }
 
+    // Received from TellerApp
     // EFFECTS: prompts user to select chequing or savings account and returns it
     private ArticleStash selectList() {
         String selection = "";  // force entry into loop
@@ -101,6 +112,7 @@ public class ArticleStashApp {
         }
     }
 
+    // Received from TellerApp
     // EFFECTS: prints balance of account to the screen
     private void printArticles(ArticleStash selected) {
         System.out.printf("Articles read: " + selected.getArticles());
