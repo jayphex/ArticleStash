@@ -21,7 +21,7 @@ public class ArticleStash {
         return articleStash.size();
     }
 
-    // REQUIRES: string must start with https: & article cannot already
+    // REQUIRES: link must start with https: & article cannot already
     // be in the list
     // MODIFIES: this
     // EFFECTS: adds an article to the log of articles
@@ -29,7 +29,7 @@ public class ArticleStash {
         articleStash.add(new Article(link, rating, comment));
     }
 
-    // REQUIRES: string must start with https: & article size must be > 0
+    // REQUIRES: link must start with https: & article size must be > 0
     // MODIFIES: this
     // EFFECTS: remove an article from the log of articles
     public void removeArticle(String link) {
@@ -57,6 +57,8 @@ public class ArticleStash {
         }
     }
 
+    // EFFECTS: finds an article given a link, if there isn't an article
+    // to be found then return null
     public Article findArticle(String link) {
         for (Article a : articleStash) {
             if (link.equals(a.getArticleLink())) {

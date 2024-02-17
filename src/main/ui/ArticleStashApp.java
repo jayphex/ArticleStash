@@ -15,7 +15,7 @@ public class ArticleStashApp {
         runArticleStash();
     }
 
-    // Received from TellerApp
+    // Code received from the TellerApp from the project example provided.
     private void runArticleStash() {
         boolean keepGoing = true;
         String command = null;
@@ -36,7 +36,7 @@ public class ArticleStashApp {
         System.out.println("That's all!");
     }
 
-    // Received from TellerApp
+    // Code received from the TellerApp from the project example provided.
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
@@ -44,12 +44,16 @@ public class ArticleStashApp {
             doAddArticle();
         } else if (command.equals("remove")) {
             doRemoveArticle();
+        } else if (command.equals("edit comment")) {
+            doEditComment();
+        } else if (command.equals("edit rating")) {
+            doEditRating();
         } else {
             System.out.println("Selection not valid...");
         }
     }
 
-    // Received from TellerApp
+    // Code received from the TellerApp from the project example provided.
     // MODIFIES: this
     // EFFECTS: initializes accounts
     private void init() {
@@ -59,15 +63,18 @@ public class ArticleStashApp {
         input.useDelimiter("\n");
     }
 
+    // Code received from the TellerApp from the project example provided.
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\tadd: add article");
         System.out.println("\tremove: remove article");
+        System.out.println("\tedit comment: edit comment on an article");
+        System.out.println("\tedit rating: edit rating on an article");
         System.out.println("\tquit: quit");
     }
 
-    // Received from TellerApp
+    // Code received from the TellerApp from the project example provided.
     // MODIFIES: this
     // EFFECTS: conducts an add article command
     private void doAddArticle() {
@@ -82,7 +89,7 @@ public class ArticleStashApp {
         printArticles(selected);
     }
 
-    // Received from TellerApp
+    // Code received from the TellerApp from the project example provided.
     // MODIFIES: this
     // EFFECTS: conducts a remove article command
     private void doRemoveArticle() {
@@ -93,8 +100,35 @@ public class ArticleStashApp {
         printArticles(selected);
     }
 
-    // Received from TellerApp
-    // EFFECTS: prompts user to select chequing or savings account and returns it
+    // Code received from the TellerApp from the project example provided.
+    // MODIFIES: this
+    // EFFECTS: conducts an edit comment on an article command
+    private void doEditComment() {
+        ArticleStash selected = selectList();
+        System.out.print("Enter article you would like to edit: ");
+        String article = input.next();
+        System.out.print("Enter new comment: ");
+        String comment = input.next();
+        selected.editComment(article, comment);
+        printArticles(selected);
+    }
+
+    // Code received from the TellerApp from the project example provided.
+    // MODIFIES: this
+    // EFFECTS: conducts an edit comment on an article command
+    private void doEditRating() {
+        ArticleStash selected = selectList();
+        System.out.print("Enter article you would like to edit: ");
+        String article = input.next();
+        System.out.print("Enter new rating: ");
+        int rating = Integer.parseInt(input.next());
+        selected.editRating(article, rating);
+        printArticles(selected);
+    }
+
+    // Code received from the TellerApp from the project example provided.
+    // EFFECTS: prompts user to select from list of read articles or aticles they want to
+    // read, returns whatever the user selects
     private ArticleStash selectList() {
         String selection = "";  // force entry into loop
 
@@ -112,9 +146,9 @@ public class ArticleStashApp {
         }
     }
 
-    // Received from TellerApp
+    // Code received from the TellerApp from the project example provided.
     // EFFECTS: prints articles read to the screen
     private void printArticles(ArticleStash selected) {
-        System.out.printf("Articles raad: " + selected.getNumOfArticles());
+        System.out.printf("Articles read: " + selected.getNumOfArticles());
     }
 }
