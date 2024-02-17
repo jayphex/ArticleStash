@@ -17,10 +17,6 @@ public class ArticleStash {
         articleStash = new ArrayList<>();
     }
 
-    public ArrayList<Article> getArticles() {
-        return articleStash;
-    }
-
     public int getNumOfArticles() {
         return articleStash.size();
     }
