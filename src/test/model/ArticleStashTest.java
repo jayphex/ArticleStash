@@ -140,12 +140,12 @@ class ArticleStashTest {
     @Test
     public void testFindArticle() {
         testArticleStash.addArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
-                4, "Love Hailu Mergia!");
+                5, "Love Hailu Mergia!");
         assertEquals("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
                 testArticleStash.findArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi").getArticleLink());
         assertEquals("Love Hailu Mergia!",
                 testArticleStash.findArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi").getArticleComment());
-        assertEquals(4,
+        assertEquals(5,
                 testArticleStash.findArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi").getArticleRating());
     }
 
