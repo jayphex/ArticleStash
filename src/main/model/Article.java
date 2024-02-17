@@ -27,10 +27,6 @@ public class Article {
         this.articleComment = articleComment;
     }
 
-    public void setArticleLink(String articleLink) {
-        this.articleLink = articleLink;
-    }
-
     public void setArticleRating(int articleRating) {
         this.articleRating = articleRating;
     }
