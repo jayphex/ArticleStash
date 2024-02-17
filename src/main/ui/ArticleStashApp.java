@@ -113,8 +113,8 @@ public class ArticleStashApp {
     }
 
     // Received from TellerApp
-    // EFFECTS: prints balance of account to the screen
+    // EFFECTS: prints articles read to the screen
     private void printArticles(ArticleStash selected) {
-        System.out.printf("Articles read: " + selected.getArticles());
+        System.out.printf("Articles raad: " + selected.getNumOfArticles());
     }
 }

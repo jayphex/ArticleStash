@@ -42,9 +42,9 @@ public class ArticleStash {
 
     // MODIFIES: this
     // EFFECTS: edits a comment in an article log
-    public void editComment(Article article, String comment) {
+    public void editComment(String link, String comment) {
         for (Article a : articleStash) {
-            if (Objects.equals(a.getArticleLink(), article.getArticleLink())) {
+            if (link.equals(a.getArticleLink())) {
                 a.setArticleComment(comment);
             }
         }
@@ -53,11 +53,20 @@ public class ArticleStash {
     // REQUIRES: rating > 0 & < 5
     // MODIFIES: this
     // EFFECTS: edits a rating in an article log
-    public void editRating(Article article, int rating) {
+    public void editRating(String link, int rating) {
         for (Article a : articleStash) {
-            if (Objects.equals(a.getArticleLink(), article.getArticleLink())) {
+            if (link.equals(a.getArticleLink())) {
                 a.setArticleRating(rating);
             }
         }
+    }
+
+    public Article findArticle(String link) {
+        for (Article a : articleStash) {
+            if (link.equals(a.getArticleLink())) {
+                return a;
+            }
+        }
+        return null;
     }
 }

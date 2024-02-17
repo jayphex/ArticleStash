@@ -100,4 +100,22 @@ class ArticleStashTest {
         assertEquals(0, testArticleStash.getNumOfArticles());
     }
 
+    @Test
+    public void testEditComment() {
+        testArticleStash.addArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
+                4, "Love Hailu Mergia!");
+        testArticleStash.editComment("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
+        "I love him even more!");
+        assertEquals("I love him even more!", testArticleStash.findArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi").getArticleComment()); ;
+    }
+
+    @Test
+    public void testEditRating() {
+        testArticleStash.addArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
+                4, "Love Hailu Mergia!");
+        testArticleStash.editRating("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
+                5);
+        assertEquals(5, testArticleStash.findArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi").getArticleRating()); ;
+    }
+
 }
