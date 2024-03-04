@@ -5,6 +5,9 @@ import model.ArticleStash;
 
 import java.util.Scanner;
 
+// This class contains the application that runs articleStash.
+// It is primarily consisting of the main ui, and deals with user feedback,
+// the interface of the project.
 public class ArticleStashApp {
     private ArticleStash articlesRead;
     private ArticleStash wantToRead;
@@ -71,6 +74,7 @@ public class ArticleStashApp {
         System.out.println("\tremove: remove article");
         System.out.println("\tedit comment: edit comment on an article");
         System.out.println("\tedit rating: edit rating on an article");
+        System.out.println("\tview articles: view all articles");
         System.out.println("\tquit: quit");
     }
 
@@ -123,6 +127,16 @@ public class ArticleStashApp {
         System.out.print("Enter new rating: ");
         int rating = Integer.parseInt(input.next());
         selected.editRating(article, rating);
+        printArticles(selected);
+    }
+
+    // Code received from the TellerApp from the project example provided.
+    // MODIFIES: this
+    // EFFECTS: conducts an edit comment on an article command
+    private void doViewArticle() {
+        ArticleStash selected = selectList();
+        System.out.print("These are  all the articles you've logged: ");
+        selected.viewArticles();
         printArticles(selected);
     }
 

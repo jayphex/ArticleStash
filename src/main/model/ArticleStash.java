@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 // This class contains the list of articles that the user has stashed, and
 // provides holds the information of which articles the user has stashed either
@@ -66,5 +65,10 @@ public class ArticleStash {
             }
         }
         return null;
+    }
+
+    // EFFECTS: view all the articles within a log
+    public ArrayList<Article> viewArticles() {
+        return articleStash;
     }
 }
