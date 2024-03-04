@@ -1,9 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // This class constructs an article, the information within this class
 // deals with setters and getters for the article class. These are then
 // used as elements within the ArticleStash list.
-public class Article {
+public class Article implements Writable {
     private int articleRating;
     private String articleLink;
     private String articleComment;
@@ -34,5 +37,13 @@ public class Article {
 
     public void setArticleRating(int articleRating) {
         this.articleRating = articleRating;
+    }
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("articleLink", articleLink);
+        json.put("articleRating", articleRating);
+        json.put("articleComment", articleComment);
+        return json;
     }
 }

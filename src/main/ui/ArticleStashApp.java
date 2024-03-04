@@ -2,19 +2,29 @@ package ui;
 
 import model.Article;
 import model.ArticleStash;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 // This class contains the application that runs articleStash.
 // It is primarily consisting of the main ui, and deals with user feedback,
 // the interface of the project.
 public class ArticleStashApp {
+    private static final String JSON_STORE = "./data/workroom.json";
     private ArticleStash articlesRead;
     private ArticleStash wantToRead;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: runs the article stash application
-    public ArticleStashApp() {
+    public ArticleStashApp() throws FileNotFoundException  {
+        input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runArticleStash();
     }
 
@@ -51,6 +61,12 @@ public class ArticleStashApp {
             doEditComment();
         } else if (command.equals("edit rating")) {
             doEditRating();
+        } else if (command.equals("view article")) {
+            doViewArticle();
+        } else if (command.equals("save file")) {
+            saveArticleStash();
+        } else if (command.equals("load file")) {
+            loadArticleStash();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -164,5 +180,32 @@ public class ArticleStashApp {
     // EFFECTS: prints articles read to the screen
     private void printArticles(ArticleStash selected) {
         System.out.printf("Articles read: " + selected.getNumOfArticles());
+    }
+
+    // Code received from the JsonSerializationDemo from the project example provided.
+    // EFFECTS: saves the article stash to file
+    private void saveArticleStash() {
+        ArticleStash selected = selectList();
+
+        try {
+            jsonWriter.open();
+            jsonWriter.write(selected);
+            jsonWriter.close();
+            System.out.println("Saved file to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // Code received from the JsonSerializationDemo from the project example provided.
+    // MODIFIES: this
+    // EFFECTS: loads article stash from file
+    private void loadArticleStash() {
+        try {
+            jsonReader.read();
+            System.out.println("Loaded file from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 }

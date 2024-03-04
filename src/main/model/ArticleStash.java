@@ -1,12 +1,16 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
 // This class contains the list of articles that the user has stashed, and
 // provides holds the information of which articles the user has stashed either
 // in their want to reads or the list of books they've already read.
 
-public class ArticleStash {
+public class ArticleStash implements Writable {
     ArrayList<Article> articleStash;
 
     // EFFECTS: constructs a user and provides amount of articles read
@@ -70,5 +74,24 @@ public class ArticleStash {
     // EFFECTS: view all the articles within a log
     public ArrayList<Article> viewArticles() {
         return articleStash;
+    }
+
+    // Sourced from JsonSerializationDemo
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("articles", articlesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray articlesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Article a : articleStash) {
+            jsonArray.put(a.toJson());
+        }
+
+        return jsonArray;
     }
 }
