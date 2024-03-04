@@ -38,6 +38,7 @@ public class Article implements Writable {
     public void setArticleRating(int articleRating) {
         this.articleRating = articleRating;
     }
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

@@ -61,7 +61,7 @@ public class ArticleStashApp {
             doEditComment();
         } else if (command.equals("edit rating")) {
             doEditRating();
-        } else if (command.equals("view article")) {
+        } else if (command.equals("view articleStash")) {
             doViewArticle();
         } else if (command.equals("save file")) {
             saveArticleStash();
@@ -90,7 +90,9 @@ public class ArticleStashApp {
         System.out.println("\tremove: remove article");
         System.out.println("\tedit comment: edit comment on an article");
         System.out.println("\tedit rating: edit rating on an article");
-        System.out.println("\tview articles: view all articles");
+        System.out.println("\tview articleStash: view articles you've logged");
+        System.out.println("\tload file: load previous file");
+        System.out.println("\tsave file: save file you're working on");
         System.out.println("\tquit: quit");
     }
 
@@ -152,7 +154,7 @@ public class ArticleStashApp {
     private void doViewArticle() {
         ArticleStash selected = selectList();
         System.out.print("These are  all the articles you've logged: ");
-        selected.viewArticles();
+        System.out.println(selected.viewArticles());
         printArticles(selected);
     }
 
