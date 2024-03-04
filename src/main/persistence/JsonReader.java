@@ -66,7 +66,7 @@ public class JsonReader {
     // EFFECTS: parses article from JSON object and adds it to workroom
     private void addArticle(ArticleStash as, JSONObject jsonObject) {
         String articleLink = jsonObject.getString("articleLink");
-        int articleRating = Integer.parseInt(jsonObject.getString("articleRating"));
+        int articleRating = Integer.parseInt(String.valueOf(jsonObject.getInt("articleRating")));
         String articleComment = jsonObject.getString("articleComment");
         as.addArticle(articleLink, articleRating, articleComment);
     }

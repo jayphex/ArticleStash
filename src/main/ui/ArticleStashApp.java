@@ -13,7 +13,7 @@ import java.util.Scanner;
 // It is primarily consisting of the main ui, and deals with user feedback,
 // the interface of the project.
 public class ArticleStashApp {
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/articlestash.json";
     private ArticleStash articlesRead;
     private ArticleStash wantToRead;
     private Scanner input;
@@ -57,15 +57,15 @@ public class ArticleStashApp {
             doAddArticle();
         } else if (command.equals("remove")) {
             doRemoveArticle();
-        } else if (command.equals("edit comment")) {
+        } else if (command.equals("edit c")) {
             doEditComment();
-        } else if (command.equals("edit rating")) {
+        } else if (command.equals("edit r")) {
             doEditRating();
-        } else if (command.equals("view articleStash")) {
+        } else if (command.equals("view")) {
             doViewArticle();
-        } else if (command.equals("save file")) {
+        } else if (command.equals("save")) {
             saveArticleStash();
-        } else if (command.equals("load file")) {
+        } else if (command.equals("load")) {
             loadArticleStash();
         } else {
             System.out.println("Selection not valid...");
@@ -88,11 +88,11 @@ public class ArticleStashApp {
         System.out.println("\nSelect from:");
         System.out.println("\tadd: add article");
         System.out.println("\tremove: remove article");
-        System.out.println("\tedit comment: edit comment on an article");
-        System.out.println("\tedit rating: edit rating on an article");
-        System.out.println("\tview articleStash: view articles you've logged");
-        System.out.println("\tload file: load previous file");
-        System.out.println("\tsave file: save file you're working on");
+        System.out.println("\tedit c: edit comment on an article");
+        System.out.println("\tedit r: edit rating on an article");
+        System.out.println("\tview: view articles you've logged");
+        System.out.println("\tload: load previous file");
+        System.out.println("\tsave: save file you're working on");
         System.out.println("\tquit: quit");
     }
 
