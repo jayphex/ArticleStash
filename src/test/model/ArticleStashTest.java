@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+// This class represents a test for the Article Stash class.
 class ArticleStashTest {
     private ArticleStash testArticleStash;
 

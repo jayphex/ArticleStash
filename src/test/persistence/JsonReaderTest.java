@@ -10,12 +10,15 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+// This class represents a JsonReader test. It tests a non-existent file,
+// an empty ArticleStash as well as an ArticleStash of 2 articles.
 public class JsonReaderTest extends JsonTest {
     // Code received from the JsonSerializationDemo from the project example provided.
     @Test
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {
+            ArticleStash as = new ArticleStash();
             reader.read();
             fail("IOException expected");
         } catch (IOException e) {
@@ -28,8 +31,8 @@ public class JsonReaderTest extends JsonTest {
     void testReaderEmptyArticleStash() {
         JsonReader reader = new JsonReader("./data/testReaderEmptyArticleStash.json");
         try {
-            ArticleStash ar = reader.read();
-            assertEquals(0, ar.getNumOfArticles());
+            ArticleStash as = reader.read();
+            assertEquals(0, as.getNumOfArticles());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
