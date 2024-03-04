@@ -39,6 +39,13 @@ public class Article implements Writable {
         this.articleRating = articleRating;
     }
 
+    // Code received from the JsonSerializationDemo from the project example provided.
+    // returns string version of article
+    public String toString() {
+        return "\n" + articleLink + "\n" +  "Rating: " + articleRating + "\n"
+                + "Comments: " + articleComment + "\n";
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

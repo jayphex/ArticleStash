@@ -29,7 +29,7 @@ public class JsonWriter {
 
     // Code received from the JsonSerializationDemo from the project example provided.
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of articlestash to file
+    // EFFECTS: writes JSON representation to file
     public void write(ArticleStash stash) {
         JSONObject json = stash.toJson();
         saveToFile(json.toString(TAB));

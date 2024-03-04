@@ -1,5 +1,6 @@
 package ui;
 
+import model.Article;
 import model.ArticleStash;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -107,7 +108,7 @@ public class ArticleStashApp {
         System.out.print("Enter the comment you would like to add about the article: ");
         String comment = input.next();
         selected.addArticle(article, rating, comment);
-        printArticles(selected);
+        printArticlesRead(selected);
     }
 
     // Code received from the TellerApp from the project example provided.
@@ -118,7 +119,7 @@ public class ArticleStashApp {
         System.out.print("Enter article you would like to remove: ");
         String article = input.next();
         selected.removeArticle(article);
-        printArticles(selected);
+        printArticlesRead(selected);
     }
 
     // Code received from the TellerApp from the project example provided.
@@ -131,7 +132,7 @@ public class ArticleStashApp {
         System.out.print("Enter new comment: ");
         String comment = input.next();
         selected.editComment(article, comment);
-        printArticles(selected);
+        printArticlesRead(selected);
     }
 
     // Code received from the TellerApp from the project example provided.
@@ -144,17 +145,18 @@ public class ArticleStashApp {
         System.out.print("Enter new rating: ");
         int rating = Integer.parseInt(input.next());
         selected.editRating(article, rating);
-        printArticles(selected);
+        printArticlesRead(selected);
     }
 
     // Code received from the TellerApp from the project example provided.
     // MODIFIES: this
-    // EFFECTS: conducts an edit comment on an article command
+    // EFFECTS: views on an article command
     private void doViewArticle() {
         ArticleStash selected = selectList();
         System.out.print("These are  all the articles you've logged: ");
-        System.out.println(selected.getArticles());
-        printArticles(selected);
+        for (Article a : selected.getArticles()) {
+            System.out.println(a);
+        }
     }
 
     // Code received from the TellerApp from the project example provided.
@@ -179,7 +181,7 @@ public class ArticleStashApp {
 
     // Code received from the TellerApp from the project example provided.
     // EFFECTS: prints articles read to the screen
-    private void printArticles(ArticleStash selected) {
+    private void printArticlesRead(ArticleStash selected) {
         System.out.printf("Articles read: " + selected.getNumOfArticles());
     }
 
@@ -187,7 +189,6 @@ public class ArticleStashApp {
     // EFFECTS: saves the article stash to file
     private void saveArticleStash() {
         ArticleStash selected = selectList();
-
         try {
             jsonWriter.open();
             jsonWriter.write(selected);

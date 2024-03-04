@@ -5,13 +5,14 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 // This class contains the list of articles that the user has stashed, and
 // provides holds the information of which articles the user has stashed either
 // in their want to reads or the list of books they've already read.
-
 public class ArticleStash implements Writable {
-    ArrayList<Article> articleStash;
+    private List<Article> articleStash;
 
     // EFFECTS: constructs a user and provides amount of articles read
     // also initializes a log of articles that the user has classified
@@ -72,7 +73,7 @@ public class ArticleStash implements Writable {
     }
 
     // EFFECTS: view all the articles within a log
-    public ArrayList<Article> getArticles() {
+    public List<Article> getArticles() {
         return articleStash;
     }
 
