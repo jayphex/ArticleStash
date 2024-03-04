@@ -1,6 +1,5 @@
 package ui;
 
-import model.Article;
 import model.ArticleStash;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -154,7 +153,7 @@ public class ArticleStashApp {
     private void doViewArticle() {
         ArticleStash selected = selectList();
         System.out.print("These are  all the articles you've logged: ");
-        System.out.println(selected.viewArticles());
+        System.out.println(selected.getArticles());
         printArticles(selected);
     }
 

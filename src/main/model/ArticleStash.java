@@ -72,7 +72,7 @@ public class ArticleStash implements Writable {
     }
 
     // EFFECTS: view all the articles within a log
-    public ArrayList<Article> viewArticles() {
+    public ArrayList<Article> getArticles() {
         return articleStash;
     }
 
