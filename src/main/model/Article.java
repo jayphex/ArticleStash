@@ -40,12 +40,15 @@ public class Article implements Writable {
     }
 
     // Code received from the JsonSerializationDemo from the project example provided.
-    // returns string version of article
+    // EFFECTS: returns string version of article
     public String toString() {
         return "\n" + articleLink + "\n" +  "Rating: " + articleRating + "\n"
                 + "Comments: " + articleComment + "\n";
     }
 
+    // Code received from the JsonSerializationDemo from the project example provided.
+    // returns string version of article
+    // EFFECTS: returns an article as JSON
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

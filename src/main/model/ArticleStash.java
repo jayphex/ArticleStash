@@ -72,12 +72,13 @@ public class ArticleStash implements Writable {
         return null;
     }
 
-    // EFFECTS: view all the articles within a log
+    // EFFECTS: returns all the articles within a log
     public List<Article> getArticles() {
         return articleStash;
     }
 
     // Sourced from JsonSerializationDemo
+    // EFFECTS: returns articles as a JSON.
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -85,7 +86,8 @@ public class ArticleStash implements Writable {
         return json;
     }
 
-    // EFFECTS: returns things in this workroom as a JSON array
+    // Sourced from JsonSerializationDemo
+    // EFFECTS: returns articles in this ArticleStash as a JSON array
     private JSONArray articlesToJson() {
         JSONArray jsonArray = new JSONArray();
 

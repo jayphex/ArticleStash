@@ -63,7 +63,7 @@ public class JsonReader {
 
     // Code received from the JsonSerializationDemo from the project example provided.
     // MODIFIES: as
-    // EFFECTS: parses article from JSON object and adds it to workroom
+    // EFFECTS: parses article from JSON object and adds it to ArticleStash
     private void addArticle(ArticleStash as, JSONObject jsonObject) {
         String articleLink = jsonObject.getString("articleLink");
         int articleRating = Integer.parseInt(String.valueOf(jsonObject.getInt("articleRating")));

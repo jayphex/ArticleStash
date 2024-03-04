@@ -17,7 +17,7 @@ public class JsonWriterTest extends JsonTest {
     // Code received from the JsonSerializationDemo from the project example provided.
     void testWriterInvalidFile() {
         try {
-            ArticleStash ar = new ArticleStash();
+            ArticleStash as = new ArticleStash();
             JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
             writer.open();
             fail("IOException was expected");
@@ -52,12 +52,12 @@ public class JsonWriterTest extends JsonTest {
             ArticleStash as = new ArticleStash();
             as.addArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi", 5, "Love it!");
             as.addArticle("https://www.theguardian.com/football/2024/feb/16/arsenal-kylian-mbappe-mikel-arteta", 1, "Hate it!");
-            JsonWriter writer = new JsonWriter("./data/testWriterGeneralWorkroom.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterGeneralArticleStash.json");
             writer.open();
             writer.write(as);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterGeneralWorkroom.json");
+            JsonReader reader = new JsonReader("./data/testWriterGeneralArticleStash.json");
             as = reader.read();
             List<Article> articles = as.getArticles();
             assertEquals(2, articles.size());
