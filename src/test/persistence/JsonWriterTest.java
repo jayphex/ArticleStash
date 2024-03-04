@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 // This class represents a JsonWriter test. It tests a non-existent file,
 // an empty ArticleStash as well as an ArticleStash of 2 articles.
 public class JsonWriterTest extends JsonTest {
-    // Code received from the JsonSerializationDemo from the project example provided.
     @Test
+    // Code received from the JsonSerializationDemo from the project example provided.
     void testWriterInvalidFile() {
         try {
             ArticleStash ar = new ArticleStash();
@@ -26,8 +26,8 @@ public class JsonWriterTest extends JsonTest {
         }
     }
 
-    // Code received from the JsonSerializationDemo from the project example provided.
     @Test
+    // Code received from the JsonSerializationDemo from the project example provided.
     void testWriterEmptyArticleStash() {
         try {
             ArticleStash as = new ArticleStash();
@@ -44,7 +44,9 @@ public class JsonWriterTest extends JsonTest {
         }
     }
 
+
     @Test
+    // Code received from the JsonSerializationDemo from the project example provided.
     void testWriterGeneralArticleStash() {
         try {
             ArticleStash as = new ArticleStash();

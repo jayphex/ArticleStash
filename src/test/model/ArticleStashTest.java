@@ -19,12 +19,12 @@ class ArticleStashTest {
     }
 
     @Test
-    public void testConstructor() {
+    void testConstructor() {
         assertEquals(0, testArticleStash.getNumOfArticles());
     }
 
     @Test
-    public void testGetArticleLink() {
+    void testGetArticleLink() {
         Article testArticle = new Article("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
                 4, "Love Hailu Mergia!");
         assertEquals("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
@@ -32,7 +32,7 @@ class ArticleStashTest {
     }
 
     @Test
-    public void testGetArticleRating() {
+    void testGetArticleRating() {
         Article testArticle = new Article("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
                 4, "Love Hailu Mergia!");
         assertEquals(4,
@@ -40,7 +40,7 @@ class ArticleStashTest {
     }
 
     @Test
-    public void testGetArticleComment() {
+    void testGetArticleComment() {
         Article testArticle = new Article("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
                 4, "Love Hailu Mergia!");
         assertEquals("Love Hailu Mergia!",
@@ -50,7 +50,7 @@ class ArticleStashTest {
 
 
     @Test
-    public void getNumOfArticles() {
+    void getNumOfArticles() {
         assertEquals(0, testArticleStash.getNumOfArticles());
         testArticleStash.addArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
                 4, "Love Hailu Mergia!");
@@ -58,7 +58,7 @@ class ArticleStashTest {
     }
 
     @Test
-    public void testAddArticle() {
+    void testAddArticle() {
         assertEquals(0, testArticleStash.getNumOfArticles());
         testArticleStash.addArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
                 4, "Love Hailu Mergia!");
@@ -66,7 +66,7 @@ class ArticleStashTest {
     }
 
     @Test
-    public void testAddMultipleArticles() {
+    void testAddMultipleArticles() {
         assertEquals(0, testArticleStash.getNumOfArticles());
         testArticleStash.addArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
                 4, "Love Hailu Mergia!");
@@ -78,7 +78,7 @@ class ArticleStashTest {
 
 
     @Test
-    public void testRemoveArticle() {
+    void testRemoveArticle() {
         assertEquals(0, testArticleStash.getNumOfArticles());
         testArticleStash.addArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
                 4, "Love Hailu Mergia!");
@@ -88,7 +88,7 @@ class ArticleStashTest {
     }
 
     @Test
-    public void testRemoveMultipleArticles() {
+    void testRemoveMultipleArticles() {
         assertEquals(0, testArticleStash.getNumOfArticles());
         testArticleStash.addArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
                 4, "Love Hailu Mergia!");
@@ -103,7 +103,7 @@ class ArticleStashTest {
     }
 
     @Test
-    public void testEditComment() {
+    void testEditComment() {
         testArticleStash.addArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
                 4, "Love Hailu Mergia!");
         testArticleStash.editComment("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
@@ -112,7 +112,7 @@ class ArticleStashTest {
     }
 
     @Test
-    public void testEditCommentFailed() {
+    void testEditCommentFailed() {
         testArticleStash.addArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
                 4, "Love Hailu Mergia!");
         testArticleStash.editComment("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-tax",
@@ -121,7 +121,7 @@ class ArticleStashTest {
     }
 
     @Test
-    public void testEditRating() {
+    void testEditRating() {
         testArticleStash.addArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
                 4, "Love Hailu Mergia!");
         testArticleStash.editRating("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
@@ -130,7 +130,7 @@ class ArticleStashTest {
     }
 
     @Test
-    public void testEditRatingFailed() {
+    void testEditRatingFailed() {
         testArticleStash.addArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
                 4, "Love Hailu Mergia!");
         testArticleStash.editRating("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-tax",
@@ -139,7 +139,7 @@ class ArticleStashTest {
     }
 
     @Test
-    public void testFindArticle() {
+    void testFindArticle() {
         testArticleStash.addArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
                 5, "Love Hailu Mergia!");
         assertEquals("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
@@ -151,7 +151,7 @@ class ArticleStashTest {
     }
 
     @Test
-    public void testFindArticleFailed() {
+    void testFindArticleFailed() {
         testArticleStash.addArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-taxi",
                 4, "Love Hailu Mergia!");
         assertNull(testArticleStash.findArticle("https://www.theguardian.com/music/2018/mar/01/hailu-mergia-the-ethiopian-jazz-legend-who-jams-in-his-tax"));

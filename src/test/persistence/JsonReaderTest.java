@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 // This class represents a JsonReader test. It tests a non-existent file,
 // an empty ArticleStash as well as an ArticleStash of 2 articles.
 public class JsonReaderTest extends JsonTest {
-    // Code received from the JsonSerializationDemo from the project example provided.
     @Test
+    // Code received from the JsonSerializationDemo from the project example provided.
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {
@@ -26,8 +26,8 @@ public class JsonReaderTest extends JsonTest {
         }
     }
 
-    // Code received from the JsonSerializationDemo from the project example provided.
     @Test
+    // Code received from the JsonSerializationDemo from the project example provided.
     void testReaderEmptyArticleStash() {
         JsonReader reader = new JsonReader("./data/testReaderEmptyArticleStash.json");
         try {
@@ -38,8 +38,8 @@ public class JsonReaderTest extends JsonTest {
         }
     }
 
-    // Code received from the JsonSerializationDemo from the project example provided.
     @Test
+    // Code received from the JsonSerializationDemo from the project example provided.
     void testReaderGeneralArticleStash() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralArticleStash.json");
         try {

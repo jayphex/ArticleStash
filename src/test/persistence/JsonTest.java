@@ -1,8 +1,6 @@
 package persistence;
 
 import model.Article;
-import model.ArticleStash;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 // This class tests that the article saved to the Json file is the article
