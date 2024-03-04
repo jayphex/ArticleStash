@@ -19,4 +19,6 @@ to leave a review of the articles I've read just as a way to remember my thought
 - As a user, I want to be able to add articles to a list of want to reads.
 - As a user, I want to be able to remove an article from my logs.
 - As a user, I want to be able to remove articles form the list of want to reads.
-- As a user, I want to be able to see the statistics on how many articles I've read in the year and all-time. 
+- As a user, I want to be able to see the statistics on how many articles I've read in the year and all-time.
+- As a user, I want to be able to save the list of articles I've read so far if I want to.
+- As a user, I want to be able to load up all the list of articles I've read so far if I want to.
