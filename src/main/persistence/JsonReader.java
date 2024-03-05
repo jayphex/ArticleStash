@@ -30,6 +30,7 @@ public class JsonReader {
         return parseArticleStash(jsonObject);
     }
 
+
     // Code received from the JsonSerializationDemo from the project example provided.
     // EFFECTS: reads source file as string and returns it
     private String readFile(String source) throws IOException {

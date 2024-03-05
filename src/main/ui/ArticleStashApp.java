@@ -13,18 +13,23 @@ import java.util.Scanner;
 // It is primarily consisting of the main ui, and deals with user feedback,
 // the interface of the project.
 public class ArticleStashApp {
-    private static final String JSON_STORE = "./data/articlestash.json";
+    private static final String JSON_STORE_ARTICLESREAD = "./data/articlesread.json";
+    private static final String JSON_STORE_WANTTOREAD = "./data/wanttoread.json";
     private ArticleStash articlesRead;
     private ArticleStash wantToRead;
     private Scanner input;
     private JsonWriter jsonWriter;
+    private JsonWriter jsonWriter2;
     private JsonReader jsonReader;
+    private JsonReader jsonReader2;
 
     // EFFECTS: runs the article stash application
     public ArticleStashApp() throws FileNotFoundException  {
         input = new Scanner(System.in);
-        jsonWriter = new JsonWriter(JSON_STORE);
-        jsonReader = new JsonReader(JSON_STORE);
+        jsonWriter = new JsonWriter(JSON_STORE_WANTTOREAD);
+        jsonReader = new JsonReader(JSON_STORE_WANTTOREAD);
+        jsonWriter2 = new JsonWriter(JSON_STORE_ARTICLESREAD);
+        jsonReader2 = new JsonReader(JSON_STORE_ARTICLESREAD);
         runArticleStash();
     }
 
@@ -188,14 +193,16 @@ public class ArticleStashApp {
     // Code received from the JsonSerializationDemo from the project example provided.
     // EFFECTS: saves the article stash to file
     private void saveArticleStash() {
-        ArticleStash selected = selectList();
         try {
             jsonWriter.open();
-            jsonWriter.write(selected);
+            jsonWriter2.open();
+            jsonWriter.write(wantToRead);
+            jsonWriter2.write(articlesRead);
             jsonWriter.close();
-            System.out.println("Saved file to " + JSON_STORE);
+            jsonWriter2.close();
+            System.out.println("Saved file to " + JSON_STORE_WANTTOREAD + " & " + JSON_STORE_ARTICLESREAD);
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + JSON_STORE);
+            System.out.println("Unable to write to file: " + JSON_STORE_ARTICLESREAD + " & " + JSON_STORE_WANTTOREAD);
         }
     }
 
@@ -204,10 +211,11 @@ public class ArticleStashApp {
     // EFFECTS: loads article stash from file
     private void loadArticleStash() {
         try {
-            jsonReader.read();
-            System.out.println("Loaded file from " + JSON_STORE);
+            wantToRead = jsonReader.read();
+            articlesRead = jsonReader2.read();
+            System.out.println("Loaded file from " + JSON_STORE_WANTTOREAD + " & " + JSON_STORE_ARTICLESREAD);
         } catch (IOException e) {
-            System.out.println("Unable to read from file: " + JSON_STORE);
+            System.out.println("Unable to read from file: " + JSON_STORE_WANTTOREAD + " & " + JSON_STORE_ARTICLESREAD);
         }
     }
 }
