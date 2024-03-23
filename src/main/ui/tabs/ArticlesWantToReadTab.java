@@ -1,7 +1,6 @@
 package ui.tabs;
 
 import model.Article;
-import model.ArticleStash;
 import ui.ArticleStashUI;
 import ui.ButtonNames;
 
@@ -9,22 +8,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 public class ArticlesWantToReadTab extends Tab {
-    private final ArticleStash wantToRead;
 
     public ArticlesWantToReadTab(ArticleStashUI controller) {
         super(controller);
 
         setLayout(new GridLayout(0, 1));
 
-        placeArticlesReadButtons();
-
-        wantToRead = getController().getWantToRead();
+        placeWantToReadButtons();
     }
 
-    private void placeArticlesReadButtons() {
+    private void placeWantToReadButtons() {
         JButton addArticleButton = new JButton(ButtonNames.ADD.getName());
         JButton editCommentButton = new JButton(ButtonNames.EDIT_COMMENT.getName());
         JButton editRatingButton = new JButton(ButtonNames.EDIT_RATING.getName());
@@ -62,7 +57,7 @@ public class ArticlesWantToReadTab extends Tab {
         inputPanel.setLayout(new GridLayout(3, 2));
         inputPanel.add(new JLabel("Link:"));
         inputPanel.add(titleField);
-        inputPanel.add(new JLabel("Rating:"));
+        inputPanel.add(new JLabel("Rating (between 1-5):"));
         inputPanel.add(ratingField);
         inputPanel.add(new JLabel("Comment:"));
         inputPanel.add(commentField);
@@ -73,16 +68,52 @@ public class ArticlesWantToReadTab extends Tab {
             String title = titleField.getText();
             int rating = Integer.parseInt(ratingField.getText());
             String comment = commentField.getText();
-            wantToRead.addArticle(title, rating, comment);
+            getController().getWantToRead().addArticle(title, rating, comment);
             JOptionPane.showMessageDialog(null, "Article added successfully!");
         }
     }
 
     private void viewArticles() {
-        List<Article> articleStash = wantToRead.getArticles();
+        int option = JOptionPane.showConfirmDialog(this,
+                "Would you like to view articles filtered to a specific rating?",
+                "View Articles", JOptionPane.YES_NO_OPTION);
 
+        if (option == JOptionPane.YES_OPTION) {
+            yesOption();
+        } else {
+            noOption();
+        }
+    }
+
+    private void yesOption() {
+        StringBuilder wantToRead = new StringBuilder();
+        String input = JOptionPane.showInputDialog(this, "Input the rating you would like to filter articles by:");
+        try {
+            int rating = Integer.parseInt(input);
+
+            for (Article article : getController().getWantToRead().getArticles()) {
+                if (article.getArticleRating() == rating) {
+                    wantToRead.append(article.getArticleLink()).append("\n");
+                    wantToRead.append("Rating: ").append(article.getArticleRating()).append("\n");
+                    wantToRead.append("Comment: ").append(article.getArticleComment()).append("\n");
+                    wantToRead.append("\n");
+                }
+            }
+
+            JTextArea textArea = new JTextArea(wantToRead.toString());
+            JScrollPane scrollPane = new JScrollPane(textArea);
+            scrollPane.setPreferredSize(new Dimension(600, 400));
+
+            JOptionPane.showMessageDialog(this, scrollPane, "Articles", JOptionPane.PLAIN_MESSAGE);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid rating, please select a number between 1-5!",
+                    "INVALID", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void noOption() {
         StringBuilder articlesRead = new StringBuilder();
-        for (Article article : articleStash) {
+        for (Article article : getController().getWantToRead().getArticles()) {
             articlesRead.append(article.getArticleLink()).append("\n");
             articlesRead.append("Rating: ").append(article.getArticleRating()).append("\n");
             articlesRead.append("Comment: ").append(article.getArticleComment()).append("\n");

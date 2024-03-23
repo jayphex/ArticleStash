@@ -1,1 +1,22 @@
-{"articles": []}
+{"articles": [
+    {
+        "articleComment": "I enjoyed it, quite a good read!",
+        "articleLink": "https://www.theguardian.com/cities/2014/sep/16/-sp-life-timbuktu-mali-ancient-city-gold-slowly-turning-to-dust",
+        "articleRating": 4
+    },
+    {
+        "articleComment": "Really interesting!",
+        "articleLink": "https://www.theguardian.com/environment/2024/mar/21/west-africa-heatwave-climate-crisis-study",
+        "articleRating": 5
+    },
+    {
+        "articleComment": "I loved it!",
+        "articleLink": "https://www.theguardian.com/global-development/2024/mar/21/it-gave-me-a-voice-the-burkina-faso-dance-school-opening-doors-for-young-talent",
+        "articleRating": 5
+    },
+    {
+        "articleComment": "My absolute favourite!",
+        "articleLink": "https://www.phillymag.com/news/2021/02/20/sonia-sanchez-poetry/",
+        "articleRating": 5
+    }
+]}

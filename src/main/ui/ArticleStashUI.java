@@ -129,7 +129,7 @@ public class ArticleStashUI extends JFrame {
 
     // Code received from the TellerApp from the project example provided.
     // MODIFIES: this
-    // EFFECTS: initializes accounts
+    // EFFECTS: initializes ArticleStashes
     public void init() {
         articlesRead = new ArticleStash();
         wantToRead = new ArticleStash();
@@ -250,9 +250,10 @@ public class ArticleStashUI extends JFrame {
             jsonWriter2.write(articlesRead);
             jsonWriter.close();
             jsonWriter2.close();
-            System.out.println("Saved file to " + JSON_STORE_WANTTOREAD + " & " + JSON_STORE_ARTICLESREAD);
+            JOptionPane.showMessageDialog(this, "ArticleStash file saved!", "Save", JOptionPane.INFORMATION_MESSAGE);
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + JSON_STORE_ARTICLESREAD + " & " + JSON_STORE_WANTTOREAD);
+            JOptionPane.showMessageDialog(this, "Error saving files to "
+                    + JSON_STORE_WANTTOREAD + " & " + JSON_STORE_ARTICLESREAD);
         }
     }
 
@@ -263,15 +264,11 @@ public class ArticleStashUI extends JFrame {
         try {
             wantToRead = jsonReader.read();
             articlesRead = jsonReader2.read();
-            System.out.println("Loaded file from " + JSON_STORE_WANTTOREAD + " & " + JSON_STORE_ARTICLESREAD);
+            JOptionPane.showMessageDialog(this, "Loaded ArticleStash file!", "Load", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException e) {
-            System.out.println("Unable to read from file: " + JSON_STORE_WANTTOREAD + " & " + JSON_STORE_ARTICLESREAD);
+            JOptionPane.showMessageDialog(this, "Unable to read file from: " + JSON_STORE_WANTTOREAD
+                    + " & " + JSON_STORE_ARTICLESREAD);
         }
-    }
-
-    //EFFECTS: returns sidebar of this UI
-    public JTabbedPane getTabbedPane() {
-        return topbar;
     }
 
     public ArticleStash getArticlesRead() {
