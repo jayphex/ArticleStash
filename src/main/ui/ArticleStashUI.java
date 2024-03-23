@@ -4,7 +4,11 @@ import model.Article;
 import model.ArticleStash;
 import persistence.JsonReader;
 import persistence.JsonWriter;
+import ui.tabs.ArticlesWantToReadTab;
+import ui.tabs.HomeTab;
+import ui.tabs.ArticlesReadTab;
 
+import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
@@ -12,28 +16,74 @@ import java.util.Scanner;
 // This class contains the application that runs articleStash.
 // It is primarily consisting of the main ui, and deals with user feedback,
 // the interface of the project.
-public class ArticleStashApp {
+public class ArticleStashUI extends JFrame {
     private static final String JSON_STORE_ARTICLESREAD = "./data/articlesread.json";
     private static final String JSON_STORE_WANTTOREAD = "./data/wanttoread.json";
+
     private ArticleStash articlesRead;
     private ArticleStash wantToRead;
+
     private Scanner input;
     private JsonWriter jsonWriter;
     private JsonWriter jsonWriter2;
     private JsonReader jsonReader;
     private JsonReader jsonReader2;
 
-    // EFFECTS: runs the article stash application
-    public ArticleStashApp() throws FileNotFoundException  {
+    public static final int HOME_TAB_INDEX = 0;
+    public static final int ARTICLES_READ_INDEX = 1;
+    public static final int ARTICLES_WANT_INDEX = 2;
+
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 400;
+    private JTabbedPane topbar;
+
+    // EFFECTS: constructor for the ArticleStashApp
+    public ArticleStashUI() throws FileNotFoundException  {
+        super("Article Stash");
+
+        setSize(WIDTH, HEIGHT);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        topbar = new JTabbedPane();
+        topbar.setTabPlacement(JTabbedPane.TOP);
+
+        loadTabs();
+        add(topbar);
+
+        setVisible(true);
+
         input = new Scanner(System.in);
+
         jsonWriter = new JsonWriter(JSON_STORE_WANTTOREAD);
         jsonReader = new JsonReader(JSON_STORE_WANTTOREAD);
+
         jsonWriter2 = new JsonWriter(JSON_STORE_ARTICLESREAD);
         jsonReader2 = new JsonReader(JSON_STORE_ARTICLESREAD);
-        runArticleStash();
+
+        init();
+    }
+
+    //MODIFIES: this
+    //EFFECTS: adds home tab, settings tab and report tab to this UI
+    private void loadTabs() {
+        JPanel homeTab = new HomeTab(this);
+
+        topbar.add(homeTab, HOME_TAB_INDEX);
+        topbar.setTitleAt(HOME_TAB_INDEX, "Home");
+
+        JPanel articlesReadTab = new ArticlesReadTab(this);
+
+        topbar.add(articlesReadTab, ARTICLES_READ_INDEX);
+        topbar.setTitleAt(ARTICLES_READ_INDEX, "Read");
+
+        JPanel articlesWantToReadTab = new ArticlesWantToReadTab(this);
+
+        topbar.add(articlesWantToReadTab, ARTICLES_WANT_INDEX);
+        topbar.setTitleAt(ARTICLES_WANT_INDEX, "Want To Read");
     }
 
     // Code received from the TellerApp from the project example provided.
+    // EFFECTS: runs an ArticleStash
     private void runArticleStash() {
         boolean keepGoing = true;
         String command = null;
@@ -80,7 +130,7 @@ public class ArticleStashApp {
     // Code received from the TellerApp from the project example provided.
     // MODIFIES: this
     // EFFECTS: initializes accounts
-    private void init() {
+    public void init() {
         articlesRead = new ArticleStash();
         wantToRead = new ArticleStash();
         input = new Scanner(System.in);
@@ -192,7 +242,7 @@ public class ArticleStashApp {
 
     // Code received from the JsonSerializationDemo from the project example provided.
     // EFFECTS: saves the article stash to file
-    private void saveArticleStash() {
+    public void saveArticleStash() {
         try {
             jsonWriter.open();
             jsonWriter2.open();
@@ -209,7 +259,7 @@ public class ArticleStashApp {
     // Code received from the JsonSerializationDemo from the project example provided.
     // MODIFIES: this
     // EFFECTS: loads article stash from file
-    private void loadArticleStash() {
+    public void loadArticleStash() {
         try {
             wantToRead = jsonReader.read();
             articlesRead = jsonReader2.read();
@@ -217,5 +267,18 @@ public class ArticleStashApp {
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE_WANTTOREAD + " & " + JSON_STORE_ARTICLESREAD);
         }
+    }
+
+    //EFFECTS: returns sidebar of this UI
+    public JTabbedPane getTabbedPane() {
+        return topbar;
+    }
+
+    public ArticleStash getArticlesRead() {
+        return articlesRead;
+    }
+
+    public ArticleStash getWantToRead() {
+        return wantToRead;
     }
 }
