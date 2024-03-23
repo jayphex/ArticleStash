@@ -39,7 +39,7 @@ public class HomeTab extends Tab {
 
     //EFFECTS: places image in the console
     private void placeImage() {
-        ImageIcon newspaper = new ImageIcon("images/newspaper.jpg");
+        ImageIcon newspaper = new ImageIcon("images/betternewspaper.png");
         JLabel image = new JLabel(newspaper);
         image.setSize(WIDTH, HEIGHT / 3);
         this.add(image);
