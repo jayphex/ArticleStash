@@ -14,6 +14,7 @@ public abstract class Tab extends JPanel {
         this.controller = controller;
     }
 
+    // Sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
     //EFFECTS: creates and returns row with button included
     public JPanel formatButtonRow(JButton b) {
         JPanel p = new JPanel();

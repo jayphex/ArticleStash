@@ -9,6 +9,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// This class represents the Articles Read tab of the GUI, this tab contains four buttons.
+// Here, the user can add an article to the Articles Read section of the ArticleStash as well
+// as view all the articles they have added to the Read section thus far.
 public class ArticlesReadTab extends Tab {
     public ArticlesReadTab(ArticleStashUI controller) {
         super(controller);
@@ -18,6 +21,9 @@ public class ArticlesReadTab extends Tab {
         placeArticlesReadButtons();
     }
 
+    // Sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
+    // MODIFIES: this
+    // EFFECTS: places the buttons associated with the Articles Read tab.
     private void placeArticlesReadButtons() {
         JButton addArticleButton = new JButton(ButtonNames.ADD.getName());
         JButton editCommentButton = new JButton(ButtonNames.EDIT_COMMENT.getName());
@@ -47,6 +53,9 @@ public class ArticlesReadTab extends Tab {
         this.add(buttonRow);
     }
 
+    // Sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
+    // MODIFIES: ArticlesRead, this
+    // EFFECTS: adds the Article inputted by the user to the ArticleStash
     private void addArticle() {
         JTextField titleField = new JTextField(20);
         JTextField ratingField = new JTextField(5);
@@ -72,6 +81,9 @@ public class ArticlesReadTab extends Tab {
         }
     }
 
+    // Sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
+    // EFFECTS: Provides a prompt for the user to view all the articles they've added thus far,
+    // the user can also filter the articles if they would like
     void viewArticles() {
         int option = JOptionPane.showConfirmDialog(this,
                 "Would you like to view articles filtered to a specific rating?",
@@ -84,6 +96,10 @@ public class ArticlesReadTab extends Tab {
         }
     }
 
+    // Sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
+    // MODIFIES: this
+    // EFFECTS: Filters the articles that have all been added thus far, if the article
+    // has the same rating as the rating the user inputted then display the article.
     private void yesOption() {
         StringBuilder articlesRead = new StringBuilder();
         String input = JOptionPane.showInputDialog(this, "Input the rating you would like to filter articles by:");
@@ -110,6 +126,9 @@ public class ArticlesReadTab extends Tab {
         }
     }
 
+    // Sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
+    // MODIFIES: this
+    // EFFECTS: Displays all the articles that the user has added thus far.
     private void noOption() {
         StringBuilder articlesRead = new StringBuilder();
         for (Article article : getController().getArticlesRead().getArticles()) {

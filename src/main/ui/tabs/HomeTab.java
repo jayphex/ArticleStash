@@ -8,9 +8,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// This class represents the Home tab of the GUI, this tab contains three buttons.
+// Here, the user can save the application, reload the previous application that was
+// saved or quit the application.
 public class HomeTab extends Tab {
     private static final String INIT_GREETING = "ArticleStash";
 
+    // Sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
     //EFFECTS: constructs a home tab for console with buttons and a greeting
     public HomeTab(ArticleStashUI controller) {
         super(controller);
@@ -19,10 +23,12 @@ public class HomeTab extends Tab {
 
         placeGreeting();
         placeHomeButtons();
+        placeImage();
 
         getController().init();
     }
 
+    // Sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
     //EFFECTS: creates greeting at top of console
     private void placeGreeting() {
         JLabel greeting = new JLabel(INIT_GREETING, JLabel.CENTER);
@@ -31,7 +37,17 @@ public class HomeTab extends Tab {
         this.add(greeting);
     }
 
-    //EFFECTS: creates Arrive and Leave buttons that change greeting message when clicked
+    //EFFECTS: places image in the console
+    private void placeImage() {
+        ImageIcon newspaper = new ImageIcon("images/newspaper.jpg");
+        JLabel image = new JLabel(newspaper);
+        image.setSize(WIDTH, HEIGHT / 3);
+        this.add(image);
+    }
+
+    // Sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
+    //EFFECTS: creates Load Save and Quit buttons that either load the previous file saved,
+    // save the current file or quit the whole program
     private void placeHomeButtons() {
         JButton loadButton = new JButton(ButtonNames.LOAD.getName());
         JButton saveButton = new JButton(ButtonNames.SAVE.getName());
@@ -52,6 +68,7 @@ public class HomeTab extends Tab {
         this.add(buttonRow);
     }
 
+    // EFFECTS: exits the application
     private static void quitButtonAction(JButton quitButton) {
         quitButton.addActionListener(new ActionListener() {
             @Override
@@ -61,6 +78,8 @@ public class HomeTab extends Tab {
         });
     }
 
+    // MODIFIES: this
+    // EFFECTS: saves the ArticleStash
     private void saveButtonAction(JButton saveButton) {
         saveButton.addActionListener(new ActionListener() {
             @Override
@@ -70,6 +89,8 @@ public class HomeTab extends Tab {
         });
     }
 
+    // MODIFIES: this
+    // EFFECTS: saves the ArticleStash
     private void loadButtonAction(JButton loadButton) {
         loadButton.addActionListener(new ActionListener() {
             @Override

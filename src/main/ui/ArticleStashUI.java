@@ -37,6 +37,7 @@ public class ArticleStashUI extends JFrame {
     public static final int HEIGHT = 400;
     private JTabbedPane topbar;
 
+    // Semi-sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
     // EFFECTS: constructor for the ArticleStashApp
     public ArticleStashUI() throws FileNotFoundException  {
         super("Article Stash");
@@ -61,6 +62,16 @@ public class ArticleStashUI extends JFrame {
         jsonReader2 = new JsonReader(JSON_STORE_ARTICLESREAD);
 
         init();
+    }
+
+    // EFFECTS: returns the ArticlesRead ArticleStash
+    public ArticleStash getArticlesRead() {
+        return articlesRead;
+    }
+
+    // EFFECTS: returns the WantToRead ArticleStash
+    public ArticleStash getWantToRead() {
+        return wantToRead;
     }
 
     //MODIFIES: this
@@ -240,7 +251,7 @@ public class ArticleStashUI extends JFrame {
         System.out.printf("Articles read: " + selected.getNumOfArticles());
     }
 
-    // Code received from the JsonSerializationDemo from the project example provided.
+    // Sourced from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
     // EFFECTS: saves the article stash to file
     public void saveArticleStash() {
         try {
@@ -257,7 +268,7 @@ public class ArticleStashUI extends JFrame {
         }
     }
 
-    // Code received from the JsonSerializationDemo from the project example provided.
+    // Sourced from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
     // MODIFIES: this
     // EFFECTS: loads article stash from file
     public void loadArticleStash() {
@@ -269,13 +280,5 @@ public class ArticleStashUI extends JFrame {
             JOptionPane.showMessageDialog(this, "Unable to read file from: " + JSON_STORE_WANTTOREAD
                     + " & " + JSON_STORE_ARTICLESREAD);
         }
-    }
-
-    public ArticleStash getArticlesRead() {
-        return articlesRead;
-    }
-
-    public ArticleStash getWantToRead() {
-        return wantToRead;
     }
 }
