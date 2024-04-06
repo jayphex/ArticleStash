@@ -35,3 +35,13 @@ to leave a review of the articles I've read just as a way to remember my thought
 - You can locate my visual component by seeing the newspaper cartoon that I have placed on the HomeTab.
 - You can save the state of my application by pressing the Save button on the Home tab.
 - You can reload the state of my application by pressing the Load button on the Home tab.
+
+## Phase 4: Task 2
+- As the project runs, as there is only the addition of adding an article to the UI from the last phase,
+- the only expected event would be. This should be printed once the user clicks quit on the home menu, or 
+- just simply closes the window.
+- Date: Sat Apr 06 00:12:04 PDT 2024
+  Description: Added this article:
+  (article name)
+  (article rating)
+  Comments: (article comment)
