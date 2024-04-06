@@ -5,6 +5,7 @@ import ui.ArticleStashUI;
 import javax.swing.*;
 import java.awt.*;
 
+// This class represents the abstract class for the Tabs of the GUI.
 public abstract class Tab extends JPanel {
 
     private final ArticleStashUI controller;

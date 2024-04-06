@@ -1,5 +1,12 @@
-{"articles": [{
-    "articleComment": "It seems really interesting!",
-    "articleLink": "https://www.theguardian.com/cities/2014/sep/16/-sp-life-timbuktu-mali-ancient-city-gold-slowly-turning-to-dust",
-    "articleRating": 0
-}]}
+{"articles": [
+    {
+        "articleComment": "It seems really interesting!",
+        "articleLink": "https://www.theguardian.com/cities/2014/sep/16/-sp-life-timbuktu-mali-ancient-city-gold-slowly-turning-to-dust",
+        "articleRating": 0
+    },
+    {
+        "articleComment": "Haven't read yet, but I hope LeBron doesn't leave us!",
+        "articleLink": "https://www.espn.com/nba/insider/insider/story/_/id/39605647/lebron-james-next-deal-every-lakers-option-elsewhere",
+        "articleRating": 0
+    }
+]}

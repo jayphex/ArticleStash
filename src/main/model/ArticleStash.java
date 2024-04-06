@@ -31,6 +31,7 @@ public class ArticleStash implements Writable {
     // EFFECTS: adds an article to the log of articles
     public void addArticle(String link, int rating, String comment) {
         articleStash.add(new Article(link, rating, comment));
+        EventLog.getInstance().logEvent(new Event("Added this article: " + (new Article(link, rating, comment))));
     }
 
     // REQUIRES: link must start with https: & article size must be > 0
@@ -38,6 +39,7 @@ public class ArticleStash implements Writable {
     // EFFECTS: remove an article from the log of articles
     public void removeArticle(String link) {
         articleStash.removeIf(a -> link.equals(a.getArticleLink()));
+        EventLog.getInstance().logEvent(new Event("Removed this article: " + findArticle(link)));
     }
 
     // MODIFIES: this
@@ -46,6 +48,7 @@ public class ArticleStash implements Writable {
         for (Article a : articleStash) {
             if (link.equals(a.getArticleLink())) {
                 a.setArticleComment(comment);
+                EventLog.getInstance().logEvent(new Event("Edited this article's comment: " + findArticle(link)));
             }
         }
     }
@@ -57,6 +60,7 @@ public class ArticleStash implements Writable {
         for (Article a : articleStash) {
             if (link.equals(a.getArticleLink())) {
                 a.setArticleRating(rating);
+                EventLog.getInstance().logEvent(new Event("Edited this article's rating: " + findArticle(link)));
             }
         }
     }

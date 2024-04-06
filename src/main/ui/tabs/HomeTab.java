@@ -1,5 +1,7 @@
 package ui.tabs;
 
+import model.Event;
+import model.EventLog;
 import ui.ArticleStashUI;
 import ui.ButtonNames;
 
@@ -7,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 
 // This class represents the Home tab of the GUI, this tab contains three buttons.
 // Here, the user can save the application, reload the previous application that was
@@ -73,6 +76,11 @@ public class HomeTab extends Tab {
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                for (Event event : EventLog.getInstance()) {
+                    System.out.println("Date: " + event.getDate());
+                    System.out.println("Description: " + event.getDescription());
+                }
+                EventLog.getInstance().clear();
                 System.exit(0);
             }
         });

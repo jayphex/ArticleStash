@@ -1,7 +1,8 @@
 package ui;
 
-import model.Article;
 import model.ArticleStash;
+import model.Event;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 import ui.tabs.ArticlesWantToReadTab;
@@ -9,6 +10,8 @@ import ui.tabs.HomeTab;
 import ui.tabs.ArticlesReadTab;
 
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
@@ -24,10 +27,10 @@ public class ArticleStashUI extends JFrame {
     private ArticleStash wantToRead;
 
     private Scanner input;
-    private JsonWriter jsonWriter;
-    private JsonWriter jsonWriter2;
-    private JsonReader jsonReader;
-    private JsonReader jsonReader2;
+    private final JsonWriter jsonWriter;
+    private final JsonWriter jsonWriter2;
+    private final JsonReader jsonReader;
+    private final JsonReader jsonReader2;
 
     public static final int HOME_TAB_INDEX = 0;
     public static final int ARTICLES_READ_INDEX = 1;
@@ -35,15 +38,22 @@ public class ArticleStashUI extends JFrame {
 
     public static final int WIDTH = 600;
     public static final int HEIGHT = 400;
-    private JTabbedPane topbar;
+    private final JTabbedPane topbar;
 
     // Semi-sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
     // EFFECTS: constructor for the ArticleStashApp
-    public ArticleStashUI() throws FileNotFoundException  {
+    public ArticleStashUI() throws FileNotFoundException {
         super("Article Stash");
 
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                printEventLogs();
+            }
+        });
 
         topbar = new JTabbedPane();
         topbar.setTabPlacement(JTabbedPane.TOP);
@@ -62,6 +72,15 @@ public class ArticleStashUI extends JFrame {
         jsonReader2 = new JsonReader(JSON_STORE_ARTICLESREAD);
 
         init();
+    }
+
+    private static void printEventLogs() {
+        for (Event event : EventLog.getInstance()) {
+            System.out.println("Date: " + event.getDate());
+            System.out.println("Description: " + event.getDescription());
+        }
+        EventLog.getInstance().clear();
+        System.exit(0);
     }
 
     // EFFECTS: returns the ArticlesRead ArticleStash
@@ -94,51 +113,6 @@ public class ArticleStashUI extends JFrame {
     }
 
     // Code received from the TellerApp from the project example provided.
-    // EFFECTS: runs an ArticleStash
-    private void runArticleStash() {
-        boolean keepGoing = true;
-        String command = null;
-
-        init();
-
-        while (keepGoing) {
-            displayMenu();
-            command = input.next();
-            command = command.toLowerCase();
-
-            if (command.equals("quit")) {
-                keepGoing = false;
-            } else {
-                processCommand(command);
-            }
-        }
-        System.out.println("That's all!");
-    }
-
-    // Code received from the TellerApp from the project example provided.
-    // MODIFIES: this
-    // EFFECTS: processes user command
-    private void processCommand(String command) {
-        if (command.equals("add")) {
-            doAddArticle();
-        } else if (command.equals("remove")) {
-            doRemoveArticle();
-        } else if (command.equals("edit c")) {
-            doEditComment();
-        } else if (command.equals("edit r")) {
-            doEditRating();
-        } else if (command.equals("view")) {
-            doViewArticle();
-        } else if (command.equals("save")) {
-            saveArticleStash();
-        } else if (command.equals("load")) {
-            loadArticleStash();
-        } else {
-            System.out.println("Selection not valid...");
-        }
-    }
-
-    // Code received from the TellerApp from the project example provided.
     // MODIFIES: this
     // EFFECTS: initializes ArticleStashes
     public void init() {
@@ -146,109 +120,6 @@ public class ArticleStashUI extends JFrame {
         wantToRead = new ArticleStash();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
-    }
-
-    // Code received from the TellerApp from the project example provided.
-    // EFFECTS: displays menu of options to user
-    private void displayMenu() {
-        System.out.println("\nSelect from:");
-        System.out.println("\tadd: add article");
-        System.out.println("\tremove: remove article");
-        System.out.println("\tedit c: edit comment on an article");
-        System.out.println("\tedit r: edit rating on an article");
-        System.out.println("\tview: view articles you've logged");
-        System.out.println("\tload: load previous file");
-        System.out.println("\tsave: save file you're working on");
-        System.out.println("\tquit: quit");
-    }
-
-    // Code received from the TellerApp from the project example provided.
-    // MODIFIES: this
-    // EFFECTS: conducts an add article command
-    private void doAddArticle() {
-        ArticleStash selected = selectList();
-        System.out.print("Enter article you would like to add: ");
-        String article = input.next();
-        System.out.print("Enter the rating you would give the article: ");
-        int rating = Integer.parseInt(input.next());
-        System.out.print("Enter the comment you would like to add about the article: ");
-        String comment = input.next();
-        selected.addArticle(article, rating, comment);
-        printArticlesRead(selected);
-    }
-
-    // Code received from the TellerApp from the project example provided.
-    // MODIFIES: this
-    // EFFECTS: conducts a remove article command
-    private void doRemoveArticle() {
-        ArticleStash selected = selectList();
-        System.out.print("Enter article you would like to remove: ");
-        String article = input.next();
-        selected.removeArticle(article);
-        printArticlesRead(selected);
-    }
-
-    // Code received from the TellerApp from the project example provided.
-    // MODIFIES: this
-    // EFFECTS: conducts an edit comment on an article command
-    private void doEditComment() {
-        ArticleStash selected = selectList();
-        System.out.print("Enter article you would like to edit: ");
-        String article = input.next();
-        System.out.print("Enter new comment: ");
-        String comment = input.next();
-        selected.editComment(article, comment);
-        printArticlesRead(selected);
-    }
-
-    // Code received from the TellerApp from the project example provided.
-    // MODIFIES: this
-    // EFFECTS: conducts an edit comment on an article command
-    private void doEditRating() {
-        ArticleStash selected = selectList();
-        System.out.print("Enter article you would like to edit: ");
-        String article = input.next();
-        System.out.print("Enter new rating: ");
-        int rating = Integer.parseInt(input.next());
-        selected.editRating(article, rating);
-        printArticlesRead(selected);
-    }
-
-    // Code received from the TellerApp from the project example provided.
-    // MODIFIES: this
-    // EFFECTS: views on an article command
-    private void doViewArticle() {
-        ArticleStash selected = selectList();
-        System.out.print("These are  all the articles you've logged: ");
-        for (Article a : selected.getArticles()) {
-            System.out.println(a);
-        }
-    }
-
-    // Code received from the TellerApp from the project example provided.
-    // EFFECTS: prompts user to select from list of read articles or aticles they want to
-    // read, returns whatever the user selects
-    private ArticleStash selectList() {
-        String selection = "";  // force entry into loop
-
-        while (!(selection.equals("read") || selection.equals("want to read"))) {
-            System.out.println("read for articles read");
-            System.out.println("want to read for articles read-list");
-            selection = input.next();
-            selection = selection.toLowerCase();
-        }
-
-        if (selection.equals("read")) {
-            return articlesRead;
-        } else {
-            return wantToRead;
-        }
-    }
-
-    // Code received from the TellerApp from the project example provided.
-    // EFFECTS: prints articles read to the screen
-    private void printArticlesRead(ArticleStash selected) {
-        System.out.printf("Articles read: " + selected.getNumOfArticles());
     }
 
     // Sourced from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
