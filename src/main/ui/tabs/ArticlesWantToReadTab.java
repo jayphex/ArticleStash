@@ -131,15 +131,15 @@ public class ArticlesWantToReadTab extends Tab {
     // MODIFIES: this
     // EFFECTS: Displays all the articles that the user has added thus far.
     private void noOption() {
-        StringBuilder articlesRead = new StringBuilder();
+        StringBuilder wantToRead = new StringBuilder();
         for (Article article : getController().getWantToRead().getArticles()) {
-            articlesRead.append(article.getArticleLink()).append("\n");
-            articlesRead.append("Rating: ").append(article.getArticleRating()).append("\n");
-            articlesRead.append("Comment: ").append(article.getArticleComment()).append("\n");
-            articlesRead.append("\n");
+            wantToRead.append(article.getArticleLink()).append("\n");
+            wantToRead.append("Rating: ").append(article.getArticleRating()).append("\n");
+            wantToRead.append("Comment: ").append(article.getArticleComment()).append("\n");
+            wantToRead.append("\n");
         }
 
-        JTextArea textArea = new JTextArea(articlesRead.toString());
+        JTextArea textArea = new JTextArea(wantToRead.toString());
         JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setPreferredSize(new Dimension(400, 300));
 

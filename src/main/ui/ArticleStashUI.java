@@ -14,7 +14,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
 
 // This class contains the application that runs articleStash.
 // It is primarily consisting of the main ui, and deals with user feedback,
@@ -26,7 +25,6 @@ public class ArticleStashUI extends JFrame {
     private ArticleStash articlesRead;
     private ArticleStash wantToRead;
 
-    private Scanner input;
     private final JsonWriter jsonWriter;
     private final JsonWriter jsonWriter2;
     private final JsonReader jsonReader;
@@ -62,8 +60,6 @@ public class ArticleStashUI extends JFrame {
         add(topbar);
 
         setVisible(true);
-
-        input = new Scanner(System.in);
 
         jsonWriter = new JsonWriter(JSON_STORE_WANTTOREAD);
         jsonReader = new JsonReader(JSON_STORE_WANTTOREAD);
@@ -118,8 +114,6 @@ public class ArticleStashUI extends JFrame {
     public void init() {
         articlesRead = new ArticleStash();
         wantToRead = new ArticleStash();
-        input = new Scanner(System.in);
-        input.useDelimiter("\n");
     }
 
     // Sourced from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git

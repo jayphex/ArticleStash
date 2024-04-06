@@ -45,3 +45,16 @@ to leave a review of the articles I've read just as a way to remember my thought
   (article name)
   (article rating)
   Comments: (article comment)
+
+## Phase 4: Task 3
+- If I had more time and could work on further refactoring my project, I believe I would have worked 
+- on the tab classes further. I think there's a lot of coupling, here, and repetitive code within the classes.
+- I could have created an interface that all the tabs use as there's a lot of similarities between the A
+- ArticlesWantToReadTab and the ArticlesReadTab, thus it leads to clustered code. Also, code that looks unprofessional.
+- Otherwise, I could have made Tab more effective as an abstract class in that regards to de-cluster the other two 
+- classes that I've mentioned. To implement this change, I would have made placeButtons a method in the Tab class that 
+- does the same thing as it does now for each class, however, allow it to be implemented once in Tab then I wouldn't 
+- have to continuously implement it in the two classes separately. As I look through the two classes, the only
+- difference is within the NoOption and the YesOption methods, I could have overwritten these two in their respective
+- classes, however everything else could have been abstracted into the Tab class, thus I believe that would have been
+- much more efficient code. 
