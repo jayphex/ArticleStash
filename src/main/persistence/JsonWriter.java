@@ -13,7 +13,6 @@ public class JsonWriter {
     private PrintWriter writer;
     private String destination;
 
-    // Code received from the JsonSerializationDemo from the project example provided.
     // EFFECTS: constructs writer to write to destination file
     public JsonWriter(String destination) {
         this.destination = destination;
@@ -27,7 +26,6 @@ public class JsonWriter {
         writer = new PrintWriter(destination);
     }
 
-    // Code received from the JsonSerializationDemo from the project example provided.
     // MODIFIES: this
     // EFFECTS: writes JSON representation to file
     public void write(ArticleStash stash) {
@@ -35,14 +33,12 @@ public class JsonWriter {
         saveToFile(json.toString(TAB));
     }
 
-    // Code received from the JsonSerializationDemo from the project example provided.
     // MODIFIES: this
     // EFFECTS: closes writer
     public void close() {
         writer.close();
     }
 
-    // Code received from the JsonSerializationDemo from the project example provided.
     // MODIFIES: this
     // EFFECTS: writes string to file
     private void saveToFile(String json) {

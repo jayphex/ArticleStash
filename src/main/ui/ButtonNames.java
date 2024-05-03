@@ -1,7 +1,7 @@
 package ui;
 
 // This class holds the names of the buttons for the GUI.
-// Semi-sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
+
 public enum ButtonNames {
     ADD("Add Article"),
     REMOVE("Remove Article"),

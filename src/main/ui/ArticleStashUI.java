@@ -18,6 +18,7 @@ import java.io.IOException;
 // This class contains the application that runs articleStash.
 // It is primarily consisting of the main ui, and deals with user feedback,
 // the interface of the project.
+
 public class ArticleStashUI extends JFrame {
     private static final String JSON_STORE_ARTICLESREAD = "./data/articlesread.json";
     private static final String JSON_STORE_WANTTOREAD = "./data/wanttoread.json";
@@ -108,7 +109,6 @@ public class ArticleStashUI extends JFrame {
         topbar.setTitleAt(ARTICLES_WANT_INDEX, "Want To Read");
     }
 
-    // Code received from the TellerApp from the project example provided.
     // MODIFIES: this
     // EFFECTS: initializes ArticleStashes
     public void init() {
@@ -116,7 +116,6 @@ public class ArticleStashUI extends JFrame {
         wantToRead = new ArticleStash();
     }
 
-    // Sourced from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
     // EFFECTS: saves the article stash to file
     public void saveArticleStash() {
         try {
@@ -133,7 +132,6 @@ public class ArticleStashUI extends JFrame {
         }
     }
 
-    // Sourced from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
     // MODIFIES: this
     // EFFECTS: loads article stash from file
     public void loadArticleStash() {

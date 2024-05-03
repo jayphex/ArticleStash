@@ -17,7 +17,6 @@ import java.util.Iterator;
 public class HomeTab extends Tab {
     private static final String INIT_GREETING = "ArticleStash";
 
-    // Sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
     //EFFECTS: constructs a home tab for console with buttons and a greeting
     public HomeTab(ArticleStashUI controller) {
         super(controller);
@@ -31,7 +30,6 @@ public class HomeTab extends Tab {
         getController().init();
     }
 
-    // Sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
     //EFFECTS: creates greeting at top of console
     private void placeGreeting() {
         JLabel greeting = new JLabel(INIT_GREETING, JLabel.CENTER);
@@ -48,7 +46,6 @@ public class HomeTab extends Tab {
         this.add(image);
     }
 
-    // Sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
     //EFFECTS: creates Load Save and Quit buttons that either load the previous file saved,
     // save the current file or quit the whole program
     private void placeHomeButtons() {

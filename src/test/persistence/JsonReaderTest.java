@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 // an empty ArticleStash as well as an ArticleStash of 2 articles.
 public class JsonReaderTest extends JsonTest {
     @Test
-    // Code received from the JsonSerializationDemo from the project example provided.
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {
@@ -27,7 +26,6 @@ public class JsonReaderTest extends JsonTest {
     }
 
     @Test
-    // Code received from the JsonSerializationDemo from the project example provided.
     void testReaderEmptyArticleStash() {
         JsonReader reader = new JsonReader("./data/testReaderEmptyArticleStash.json");
         try {
@@ -39,7 +37,6 @@ public class JsonReaderTest extends JsonTest {
     }
 
     @Test
-    // Code received from the JsonSerializationDemo from the project example provided.
     void testReaderGeneralArticleStash() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralArticleStash.json");
         try {

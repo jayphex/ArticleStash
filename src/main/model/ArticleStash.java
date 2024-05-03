@@ -81,7 +81,6 @@ public class ArticleStash implements Writable {
         return articleStash;
     }
 
-    // Sourced from JsonSerializationDemo
     // EFFECTS: returns articles as a JSON.
     @Override
     public JSONObject toJson() {
@@ -90,7 +89,6 @@ public class ArticleStash implements Writable {
         return json;
     }
 
-    // Sourced from JsonSerializationDemo
     // EFFECTS: returns articles in this ArticleStash as a JSON array
     private JSONArray articlesToJson() {
         JSONArray jsonArray = new JSONArray();

@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Represents an ArticleStash event.
  */
-// Whole class sourced from https://github.students.cs.ubc.ca/CPSC210/AlarmSystem.git
+
 public class Event {
     private static final int HASH_CONSTANT = 13;
     private Date dateLogged;

@@ -22,7 +22,6 @@ public class ArticlesWantToReadTab extends Tab {
         placeWantToReadButtons();
     }
 
-    // Sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
     // MODIFIES: this
     // EFFECTS: places the buttons associated with the Want To Read tab.
     private void placeWantToReadButtons() {
@@ -54,7 +53,6 @@ public class ArticlesWantToReadTab extends Tab {
         this.add(buttonRow);
     }
 
-    // Sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
     // MODIFIES: WantToRead, this
     // EFFECTS: adds the Article inputted by the user to the ArticleStash
     private void addArticle() {
@@ -82,7 +80,6 @@ public class ArticlesWantToReadTab extends Tab {
         }
     }
 
-    // Sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
     // EFFECTS: Provides a prompt for the user to view all the articles they've added thus far,
     // the user can also filter the articles if they would like
     private void viewArticles() {
@@ -97,7 +94,6 @@ public class ArticlesWantToReadTab extends Tab {
         }
     }
 
-    // Sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
     // MODIFIES: this
     // EFFECTS: Filters the articles that have all been added thus far, if the article
     // has the same rating as the rating the user inputted then display the article.
@@ -127,7 +123,6 @@ public class ArticlesWantToReadTab extends Tab {
         }
     }
 
-    // Sourced from https://github.students.cs.ubc.ca/CPSC210/LongFormProblemSolutions.git
     // MODIFIES: this
     // EFFECTS: Displays all the articles that the user has added thus far.
     private void noOption() {

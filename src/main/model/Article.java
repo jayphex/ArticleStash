@@ -39,14 +39,12 @@ public class Article implements Writable {
         this.articleRating = articleRating;
     }
 
-    // Code received from the JsonSerializationDemo from the project example provided.
     // EFFECTS: returns string version of article
     public String toString() {
         return "\n" + articleLink + "\n" +  "Rating: " + articleRating + "\n"
                 + "Comments: " + articleComment + "\n";
     }
 
-    // Code received from the JsonSerializationDemo from the project example provided.
     // returns string version of article
     // EFFECTS: returns an article as JSON
     @Override

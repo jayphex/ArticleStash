@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * Unit tests for the Event class
  */
-// Whole class sourced from https://github.students.cs.ubc.ca/CPSC210/AlarmSystem.git
 public class EventTest {
 	private Event e;
 	private Date d;

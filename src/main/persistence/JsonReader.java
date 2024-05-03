@@ -15,13 +15,11 @@ import java.util.stream.Stream;
 public class JsonReader {
     private String source;
 
-    // Code received from the JsonSerializationDemo from the project example provided.
     // EFFECTS: constructs reader to read from source file
     public JsonReader(String source) {
         this.source = source;
     }
 
-    // Code received from the JsonSerializationDemo from the project example provided.
     // EFFECTS: reads article stash from file and returns it;
     // throws IOException if an error occurs reading data from file
     public ArticleStash read() throws IOException {
@@ -31,7 +29,6 @@ public class JsonReader {
     }
 
 
-    // Code received from the JsonSerializationDemo from the project example provided.
     // EFFECTS: reads source file as string and returns it
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
@@ -43,7 +40,6 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-    // Code received from the JsonSerializationDemo from the project example provided.
     // EFFECTS: parses articlestash from JSON object and returns it
     private ArticleStash parseArticleStash(JSONObject jsonObject) {
         ArticleStash as = new ArticleStash();
@@ -51,7 +47,6 @@ public class JsonReader {
         return as;
     }
 
-    // Code received from the JsonSerializationDemo from the project example provided.
     // MODIFIES: as
     // EFFECTS: parses articles from JSON object and adds them to article stash
     private void addArticles(ArticleStash as, JSONObject jsonObject) {
@@ -62,7 +57,6 @@ public class JsonReader {
         }
     }
 
-    // Code received from the JsonSerializationDemo from the project example provided.
     // MODIFIES: as
     // EFFECTS: parses article from JSON object and adds it to ArticleStash
     private void addArticle(ArticleStash as, JSONObject jsonObject) {
