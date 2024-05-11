@@ -47,13 +47,6 @@ public class ArticleStashUI extends JFrame {
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                printEventLogs();
-            }
-        });
-
         topbar = new JTabbedPane();
         topbar.setTabPlacement(JTabbedPane.TOP);
 
@@ -69,15 +62,6 @@ public class ArticleStashUI extends JFrame {
         jsonReader2 = new JsonReader(JSON_STORE_ARTICLESREAD);
 
         init();
-    }
-
-    private static void printEventLogs() {
-        for (Event event : EventLog.getInstance()) {
-            System.out.println("Date: " + event.getDate());
-            System.out.println("Description: " + event.getDescription());
-        }
-        EventLog.getInstance().clear();
-        System.exit(0);
     }
 
     // EFFECTS: returns the ArticlesRead ArticleStash

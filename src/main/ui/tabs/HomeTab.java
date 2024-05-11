@@ -73,11 +73,6 @@ public class HomeTab extends Tab {
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (Event event : EventLog.getInstance()) {
-                    System.out.println("Date: " + event.getDate());
-                    System.out.println("Description: " + event.getDescription());
-                }
-                EventLog.getInstance().clear();
                 System.exit(0);
             }
         });

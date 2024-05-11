@@ -10,7 +10,6 @@ public enum ButtonNames {
     VIEW("View Articles"),
     LOAD("Load"),
     SAVE("Save"),
-    MENU("Menu"),
     QUIT("Quit");
 
     private final String name;

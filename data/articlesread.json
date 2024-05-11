@@ -10,13 +10,18 @@
         "articleRating": 5
     },
     {
-        "articleComment": "I loved it!",
+        "articleComment": "My absolute favourite!",
+        "articleLink": "https://www.phillymag.com/news/2021/02/20/sonia-sanchez-poetry/",
+        "articleRating": 5
+    },
+    {
+        "articleComment": "Thoroughly enjoyed!",
         "articleLink": "https://www.theguardian.com/global-development/2024/mar/21/it-gave-me-a-voice-the-burkina-faso-dance-school-opening-doors-for-young-talent",
         "articleRating": 5
     },
     {
-        "articleComment": "My absolute favourite!",
-        "articleLink": "https://www.phillymag.com/news/2021/02/20/sonia-sanchez-poetry/",
-        "articleRating": 5
+        "articleComment": "Not good!",
+        "articleLink": "https://www.espn.com/nba/insider/insider/story/_/id/39605647/lebron-james-next-deal-every-lakers-option-elsewhere",
+        "articleRating": 0
     }
 ]}
